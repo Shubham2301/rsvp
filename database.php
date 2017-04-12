@@ -1,5 +1,8 @@
  <?php
-                                //inserting the data into the table.
+				// comment for Shubham
+                                
+
+				//inserting the data into the table.
                                 $sql = "INSERT INTO data (name, phone, email)
                                 VALUES ('".$_POST["name"]."','".$_POST["phone"]."','".$_POST["email"]."')";
 
