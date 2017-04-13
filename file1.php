@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html  >
 
 <html>
 <head>
@@ -13,6 +13,7 @@
 
     <!-- download jquery cdn from cdnjs.com -->
   <script src ="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"> </script> 
+  <script src= "jscript.js" </script>
 
 </head>
 
@@ -80,46 +81,7 @@
                 <button type="button" name="save" id='save' class="btn btn-success">Save</button>
                 <button type="reject" name="Cancel" class="btn btn-danger">Cancel</button>
                 
-            </form>
-
-                <!-- jquery to apply ajax for form refreshing -->
-                    <script type="text/javascript">
-                               
-                               console.log("inside script");
-                              $(function(){
-                              $("#save").click(function(){
-                              var name = $("#name").val();
-                              var phone = $("#phone").val();
-                              var email = $("#email").val();
-                              console.log("inside script");
-                              
-                              // Returns successful data submission message when the entered information is stored in database.
-                              var dataString = 'name1='+ name + '&phone1='+ phone + '&email1='+ email;
-                              if(name==''||phone==''||email=='')
-                              {
-                              alert("Please Fill All Fields");
-                              }
-                              else
-                              {
-                              // AJAX Code To Submit Form.
-                              $.ajax({
-                              type: "POST",
-                              url: "databse.php",
-                              data: dataString,
-                              cache: false,
-                              success: function(result){
-                              console.log("inside script");
-                             
-                              //alert(result);
-                              }
-                              });
-                              }
-                              return false;
-                              });
-                              });
-                  </script>       
-
-                  
+            </form>            
 
 
  
@@ -128,7 +90,7 @@
       </div>
 
 
-                  
+    <!-- guest list -->              
 
       <div class = "col-md-6" style = "">
 
