@@ -14,6 +14,11 @@
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvy-xsfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+ <!-- download jquery cdn from cdnjs.com -->
+  <script src ="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"> </script> 
+  <script src= "jscript.js"> </script>
+
 </head>
 
 
@@ -55,8 +60,8 @@
 
                         
 
-
-             <form method="post" action="f.php">
+            <!-- Form begins here-->
+             <form method="post" action="submission.php">
               <div class="form-group">
                 <label for="name:">name</label>
                   <input type="text" class="form-control" name="name" id="name" placeholder="My name is...">
@@ -77,15 +82,17 @@
               </div>
   </br>
   
-                <button type="submit" name="save" class="btn btn-success">Save</button>
+                <button type="button" name="save" class="btn btn-success">Save</button>
                 <button type="reject" name="Cancel" class="btn btn-danger">Cancel</button>
 
             </form>
 
-<?php 
-                      
-                      if(isset($_POST['save'])){              
-                      
+
+
+
+      <!-- data insertion -->
+<?php      
+                                  
                       //inserting the data into the table.
                       $sql = "INSERT INTO data (name, phone, email)
                       VALUES ('".$_POST["name"]."','".$_POST["phone"]."','".$_POST["email"]."')";
@@ -96,7 +103,7 @@
 
                         echo "error in Insering data". mysqli_error($db);
                       }
-                    }
+                    
 
                       $query= "SELECT * FROM data";
                       $result= mysqli_query($db,$query);
@@ -113,7 +120,7 @@
       </div>
 
 
-                  
+                  <!-- guest list display -->
 
       <div class = "col-md-6" style = "">
 
