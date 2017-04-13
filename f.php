@@ -61,7 +61,7 @@
                         
 
             <!-- Form begins here-->
-             <form method="post" action="submission.php">
+             <form method="post" action="f.php">
               <div class="form-group">
                 <label for="name:">name</label>
                   <input type="text" class="form-control" name="name" id="name" placeholder="My name is...">
