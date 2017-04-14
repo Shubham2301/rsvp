@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   <script>
+    $(document).ready(function(){
+      $("button").click(function(){
+         var name=$("name").val();
+         var phone=$("phone").val();
+         var dataString= 'name1'+name + '&phone1'+phone
+        $.ajax({type:"Post", url:"db1.php", data:dataString, success: function(result){
+              str="shubham was here";
+              console.log("ajax successful")
+              $("div").html(str);
+        }});
+      });
+    });
+    </script>
+</head>
+
+<body>
+  <div><h2>Let AJAX change this text</h2></div>
+  name:<input type="text" name="name" id="name">  </br>
+  phine n:<input type="string" name="phone no." id="phone"> </br>
+  <button>Press here</button>
+ </body>
+ </html>

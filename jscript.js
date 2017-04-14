@@ -1,7 +1,7 @@
 // jquery to apply ajax for form refreshing 
                    
                                
-                               console.log("inside script");
+                               
                               $(document).ready(function(){
                                  $("#save").click(function(){
                               var name = $("#name").val();

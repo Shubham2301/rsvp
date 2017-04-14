@@ -84,7 +84,11 @@
 
 <?php 
                       
-                      if(isset($_POST['save'])){              
+              if(isset($_POST['save']))
+              {    
+                  $reg = '/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/';
+                if((preg_match("/[^0-9]/", '', $str)) && strlen($str) == 10 && (preg_match($reg,email))) 
+                  {         
                       
                       //inserting the data into the table.
                       $sql = "INSERT INTO data (name, phone, email)
@@ -96,7 +100,11 @@
 
                         echo "error in Insering data". mysqli_error($db);
                       }
-                    }
+                  }
+                    else{
+                      echo "error in entered fields"; 
+                        }
+              }
 
                       $query= "SELECT * FROM data";
                       $result= mysqli_query($db,$query);
