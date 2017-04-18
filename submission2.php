@@ -39,7 +39,7 @@
 
  </nav>
  <!-- Gird layout starts here-->
-
+ 
  <div class = "container">
   <div class = "row">
     <div class = "col-md-6 "  style = "">
@@ -54,23 +54,23 @@
       <form method="post" action="">
         <div class="form-group">
           <label for="name:">name</label>
-          <input type="text" class="form-control" name="name" id="name_id" placeholder="My name is...">
+          <input type="text" class="form-control" name="name" id="name_id" placeholder="My name is..." required>
         </div>
       </br>
 
       <div class="form-group">
         <label for="phone:">phone</label>
-        <input type="text" class="form-control" name="phone" id="phone_id" placeholder="you can call me on...">
+        <input type="tel" class="form-control" name="phone" id="phone_id" placeholder="xxxxxxxxxx" pattern="^\d{10}$" required>
       </div>
     </br>
 
     <div class="form-group">
      <label for="email:">email</label>
-     <input type="email" class="form-control" name="email" id="email_id" placeholder="abc@def.com">
+     <input type="email" class="form-control" name="email" id="email_id" placeholder="abc@def.com" required>
    </div>
  </br>
 
- <button type="button" name="save" id="save_id" class="btn btn-success">Save</button>
+ <button type="submit" name="save" id="save_id" class="btn btn-success">Save</button>
  <button type="reject" name="Cancel" class="btn btn-danger">Cancel</button>
 
 </form>
@@ -89,12 +89,20 @@
                                                                             // signifies the element 'name'
            console.log(name,phone,email);
            $.ajax({type:"Post", url:"guest_db.php", data:dataString, success: function(result){
-             console.log("result", result);
-            //str="shubham was here";
-            $('#after_ajax').load('submission.php #after_ajax');
+             //$('#form_id').load('submission.php #form_id');
+             console.log("below #form_id");
+             var ctr=1
+             var entry="<tr><td>"+ctr+"</td><td>"+name+"</td><td>"+phone+"</td></tr>";
+             $('#table_id' ).append(entry);
+             $("#name_id").val('');
+             $("#phone_id").val('');
+             $("email_id").val('');
+             ctr++;
+
+             
             console.log("ajax successful");
            
-            //$("div").html(str);
+            
           }});
       });
   });
@@ -131,31 +139,32 @@ mysqli_close($db1);
             <th>Status</th>
           </tr>
         </thead>
-        <tbody>
+         <tbody>
 
-          <?php while($row= mysqli_fetch_array($result)) { 
+           <?php// while($row= mysqli_fetch_array($result)) {
+           echo "inside table body"; 
 
-            switch ($row['status']) {
-              case 'Confirmed':
-              $label = 'success';
-              break;
-              case 'Rejected':
-              $label = 'danger';
-              break;  
-              case 'Pending':
-              default:
-              $label = 'warning';
-              break;
-            }
-            ?>
-            <tr>    
-              <th scope="row"><?php echo $inc; ?> </th> 
-              <td><?php echo $row['name']; ?></td>
-              <td><?php echo $row['phone']; ?></td>
-              <td><span class="label label-<?php echo $label; ?>"><?php echo $row['status']; ?> </span></td>      
-            </tr>
-            <?php $inc=$inc+1; } ?> 
-          </tbody>
+            // switch ($row['status']) {
+            //   case 'Confirmed':
+            //   $label = 'success';
+            //   break;
+            //   case 'Rejected':
+            //   $label = 'danger';
+            //   break;  
+            //   case 'Pending':
+            //   default:
+            //   $label = 'warning';
+            //   break;
+            // }
+            ?> 
+            <!-- <tr>    
+              <th scope="row"><?php //echo $inc; ?> </th>  -->
+              <!-- <td><?php //echo $row['name']; ?></td>
+              <td><?php //echo $row['phone']; ?></td> -->
+              <!-- <td><span class="label label-<?php //echo $label; ?>"><?php //echo $row['status']; ?> </span></td>      
+            </tr> --> 
+             <?php $inc=$inc+1;  ?>  
+           </tbody> 
         </table>
 
       </div>
