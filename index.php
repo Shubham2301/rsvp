@@ -58,7 +58,7 @@
       <form method="post" action="" id="reg_form">
         <div class="form-group">
           <label for="name:">name</label>
-          <input type="text" class="form-control" name="name" id="name_id" placeholder="My name is..." required autofocus="">
+          <input type="text" class="form-control" name="name" id="name_id" placeholder="My name is..." required >
         </div>
       </br>
 
@@ -75,8 +75,13 @@
  </br>
 
  <span type="button" name="save" id="save_id" class="btn btn-success">Save</span>
- <button type="reject" name="Cancel" class="btn btn-danger">Cancel</button>
-
+ <button type="reject" name="Cancel" class="btn btn-danger">Cancel</button> 
+ </br>
+ </br>
+ <!--<button type="button" name="g_list" id="g_list_id" action="guest_list.php" class="btn btn-primary">Click to see full guest list</button>
+     -->
+     <a href="guest_list.php">Click to see full guest list</a>
+     
 </form>
 </div>
 </div>
@@ -132,7 +137,7 @@
                   $('#table_id' ).append(entry);
                   $("#name_id").val('');
                   $("#phone_id").val('');
-                  $("email_id").val('');
+                  $("#email_id").val('');
                   ctr++;
                   console.log("ajax successful");
               }

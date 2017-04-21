@@ -51,6 +51,7 @@
               <td><?php echo $row['phone']; ?></td>
               <td><span class="label label-<?php echo $label; ?>"><?php echo $row['status']; ?> </span></td>      
             </tr>
-            <?php $inc=$inc+1; } ?> 
+            <?php $inc=$inc+1; 
+            }//end of while ?> 
           </tbody>
         </table>
