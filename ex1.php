@@ -25,10 +25,11 @@ while($row = mysqli_fetch_assoc($req)){
 }
 
 $html_string .= '</table>';
+//echo $html_string;
 
 $mpdf->WriteHTML($html_string);
 
-$mpdf->Output('guests.pdf');
+$mpdf->Output();
 
 function getTemplateHeaderRow(){
     $html = '<tr>';

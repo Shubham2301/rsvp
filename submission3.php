@@ -75,7 +75,11 @@
  </br>
 
  <span type="button" name="save" id="save_id" class="btn btn-success">Save</span>
+ <b>
  <button type="reject" name="Cancel" class="btn btn-danger">Cancel</button>
+ </br>
+ <a href="ex1.php" target="_blank">Click to see full guest list</a>
+
 
 </form>
 </div>
@@ -85,64 +89,13 @@
 
 <script>
   $(document).ready(function(){
-    // var $myForm = $('#reg_form');
-    //   if (!$myForm[0].checkValidity()) {
-    //     // If the form is invalid, submit it. The form won't actually submit;
-    //     // this will just cause the browser to display the native HTML5 error messages.
-    //     $myForm.find(':submit').click();
-    //   }
-
-           // var name1=$("#name_id").val();     //here we access the name entered using the id.
-           // var phone1=$("#phone_id").val();
-           // var email1=$("#email_id").val();
-
-           
-             function validator() {
-                if( document.form1.name.value == "" )
-         {
-            alert( "Please provide your name!" );
-            document.form1.name.focus() ;
-            return false;
-         }
-            if( document.form1.phone.value == "" )
-         {
-            alert( "Please provide your name!" );
-            document.form1.phone.focus() ;
-            return false;
-         }
-         
-         if( document.form1.email.value == "" )
-         {
-            alert( "Please provide your Email!" );
-            document.myForm.EMail.focus() ;
-            return false;
-         }
-             
-              
-          }// end of validate
-
             
-
-
     $("#save_id").click(function() {   
-            //alert("Hello");
+            
             console.log("button clicked");
             var name=$("#name_id").val();     //here we access the name entered using the id.
            var phone=$("#phone_id").val();
            var email=$("#email_id").val();
-
-           // if(validator()== true){
-           //  alert("Incomplete fields");
-            //return;
-          //}
-          validator();
-           if(validate_number()==true)
-            {
-                console.log("validate phone number");
-                alert("wrong number format");
-                return;
-            }
-
            
            var dataString= 'name='+name + '&phone='+phone+'&email='+email;  // here the attribute in ''    
                                                                             // signifies the element 'name'
@@ -154,9 +107,9 @@
               url:"guest_db.php", 
               data:dataString, 
               success: function(result) {
-             //$('#form_id').load('submission.php #form_id');
+             
                   console.log("below #form_id");
-                  var ctr=1
+                  var ctr=1;
                   var entry="<tr><td>"+ctr+"</td><td>"+name+"</td><td>"+phone+"</td></tr>";
                   $('#table_id' ).append(entry);
                   $("#name_id").val('');
@@ -203,32 +156,7 @@ mysqli_close($db1);
             <th>Status</th>
           </tr>
         </thead>
-         <tbody>
-
-           <?php// while($row= mysqli_fetch_array($result)) {
-           echo "inside table body"; 
-
-            // switch ($row['status']) {
-            //   case 'Confirmed':
-            //   $label = 'success';
-            //   break;
-            //   case 'Rejected':
-            //   $label = 'danger';
-            //   break;  
-            //   case 'Pending':
-            //   default:
-            //   $label = 'warning';
-            //   break;
-            // }
-            ?> 
-            <!-- <tr>    
-              <th scope="row"><?php //echo $inc; ?> </th>  -->
-              <!-- <td><?php //echo $row['name']; ?></td>
-              <td><?php //echo $row['phone']; ?></td> -->
-              <!-- <td><span class="label label-<?php //echo $label; ?>"><?php //echo $row['status']; ?> </span></td>      
-            </tr> --> 
-             <?php $inc=$inc+1;  ?>  
-           </tbody> 
+         
         </table>
 
       </div>

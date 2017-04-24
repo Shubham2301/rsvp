@@ -80,7 +80,7 @@
  </br>
  <!--<button type="button" name="g_list" id="g_list_id" action="guest_list.php" class="btn btn-primary">Click to see full guest list</button>
      -->
-     <a href="guest_list.php">Click to see full guest list</a>
+     <a href="ex1.php" target="_blank">Click to see full guest list</a>
      
 </form>
 </div>
