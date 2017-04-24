@@ -81,12 +81,12 @@
         </table>
        
 
-<!-- ?php
+<?php
 require_once __DIR__ . '/vendor/autoload.php';
 $mpdf = new mPDF();
 $html = '<bookmark content="Start of the Document" /><div>Section 1 text</div>';
 
-$mpdf->WriteHTML(file_get_contents('guest_list.php'));
+$mpdf->WriteHTML(file_get_contents('guest_list2.html'));
 
 $mpdf->Output();
-?> -->
+?>

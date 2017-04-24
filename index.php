@@ -56,19 +56,19 @@
    <div class = "row">
     <div class="col-md-12">
       <form method="post" action="" id="reg_form">
-        <div class="form-group">
+        <div class="form-group has-error">
           <label for="name:">name</label>
           <input type="text" class="form-control" name="name" id="name_id" placeholder="My name is..." required >
         </div>
       </br>
 
-      <div class="form-group">
+      <div class="form-group has-error">
         <label for="phone:">phone</label>
         <input type="tel" class="form-control" name="phone" id="phone_id" placeholder="xxxxxxxxxx" pattern="^\d{10}$" required>
       </div>
     </br>
 
-    <div class="form-group">
+    <div class="form-group has-error">
      <label for="email:">email</label>
      <input type="email" class="form-control" name="email" id="email_id" placeholder="abc@def.com" required>
    </div>
@@ -102,9 +102,16 @@
            var phone1=$("#phone_id").val();
            var email1=$("#email_id").val();
            if(name1==""|| phone1==""||email1==""){ 
-           
-          console.log("validation done");
+
+           var div= $("#"+id).closest("div");
+           div.addClass("has-error");
+          //console.log("validation done");
            return true;
+        }
+        else{
+          var div= $("#"+id).closest("div");
+           div.addClass("has-success");
+           return false;
         }
 
     }
@@ -137,7 +144,7 @@
                   $('#table_id' ).append(entry);
                   $("#name_id").val('');
                   $("#phone_id").val('');
-                  $("#email_id").val('');
+                  $("email_id").val('');
                   ctr++;
                   console.log("ajax successful");
               }
@@ -160,6 +167,7 @@ $inc=1;
 $row='';
 
 mysqli_close($db1);
+
 ?>
 
   <div class="row">
@@ -181,29 +189,7 @@ mysqli_close($db1);
         </thead>
          <tbody>
 
-           <?php// while($row= mysqli_fetch_array($result)) {
-           echo "inside table body"; 
-
-            // switch ($row['status']) {
-            //   case 'Confirmed':
-            //   $label = 'success';
-            //   break;
-            //   case 'Rejected':
-            //   $label = 'danger';
-            //   break;  
-            //   case 'Pending':
-            //   default:
-            //   $label = 'warning';
-            //   break;
-            // }
-            ?> 
-            <!-- <tr>    
-              <th scope="row"><?php //echo $inc; ?> </th>  -->
-              <!-- <td><?php //echo $row['name']; ?></td>
-              <td><?php //echo $row['phone']; ?></td> -->
-              <!-- <td><span class="label label-<?php //echo $label; ?>"><?php //echo $row['status']; ?> </span></td>      
-            </tr> --> 
-             <?php $inc=$inc+1;  ?>  
+            
            </tbody> 
         </table>
 

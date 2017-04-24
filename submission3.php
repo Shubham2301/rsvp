@@ -55,7 +55,7 @@
 
    <div class = "row">
     <div class="col-md-12">
-      <form method="post" action="" id="reg_form">
+      <form method="post" action="" id="reg_form" name="form1">
         <div class="form-group">
           <label for="name:">name</label>
           <input type="text" class="form-control" name="name" id="name_id" placeholder="My name is..." required autofocus="">
@@ -92,29 +92,58 @@
     //     $myForm.find(':submit').click();
     //   }
 
-    function validator() {
-           var name1=$("#name_id").val();     //here we access teh name entered using the id.
-           var phone1=$("#phone_id").val();
-           var email1=$("#email_id").val();
-           if(name1==""|| phone1==""||email1==""){ 
-           
-          console.log("validation done");
-           return true;
-        }
+           // var name1=$("#name_id").val();     //here we access the name entered using the id.
+           // var phone1=$("#phone_id").val();
+           // var email1=$("#email_id").val();
 
-    }
+           
+             function validator() {
+                if( document.form1.name.value == "" )
+         {
+            alert( "Please provide your name!" );
+            document.form1.name.focus() ;
+            return false;
+         }
+            if( document.form1.phone.value == "" )
+         {
+            alert( "Please provide your name!" );
+            document.form1.phone.focus() ;
+            return false;
+         }
+         
+         if( document.form1.email.value == "" )
+         {
+            alert( "Please provide your Email!" );
+            document.myForm.EMail.focus() ;
+            return false;
+         }
+             
+              
+          }// end of validate
+
+            
 
 
     $("#save_id").click(function() {   
             //alert("Hello");
-           if(validator()== true){
-            alert("Incomplete fields");
-            return;
-          }
-
-           var name=$("#name_id").val();     //here we access teh name entered using the id.
+            console.log("button clicked");
+            var name=$("#name_id").val();     //here we access the name entered using the id.
            var phone=$("#phone_id").val();
            var email=$("#email_id").val();
+
+           // if(validator()== true){
+           //  alert("Incomplete fields");
+            //return;
+          //}
+          validator();
+           if(validate_number()==true)
+            {
+                console.log("validate phone number");
+                alert("wrong number format");
+                return;
+            }
+
+           
            var dataString= 'name='+name + '&phone='+phone+'&email='+email;  // here the attribute in ''    
                                                                             // signifies the element 'name'
            console.log(name,phone,email);
@@ -132,7 +161,7 @@
                   $('#table_id' ).append(entry);
                   $("#name_id").val('');
                   $("#phone_id").val('');
-                  $("email_id").val('');
+                  $("#email_id").val('');
                   ctr++;
                   console.log("ajax successful");
               }
