@@ -3,10 +3,6 @@
     "description": "composer for rsvp project",
     "type": "project",
     "require": {
-        "mikehaertl/phpwkhtmltopdf": "^2.2",
-        "knplabs/knp-snappy": "^0.4.3",
-        "h4cc/wkhtmltopdf-amd64": "0.12.x",
-        "h4cc/wkhtmltopdf-i386": "0.12.x",
         "mpdf/mpdf": "^6.1",
         "drewm/mailchimp-api": "^2.4"
     }
