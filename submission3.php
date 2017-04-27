@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 
-<?php 
-$db1= mysqli_connect('localhost','root','','guests') or die("error connecting to mysqli server");
-?>
+<?php require_once "show_list.php"; ?>
 
 <html>
     <head>
@@ -35,7 +33,7 @@ $db1= mysqli_connect('localhost','root','','guests') or die("error connecting to
         </nav>
         <div class = "container">
             <div class = "row">
-                <div class = "col-md-6 "  style = "">
+                <div class = "col-md-6">
                     <div class = "row">
                         <div class="col-md-12">
                             <h1>Register New Guest</h1>
@@ -68,35 +66,44 @@ $db1= mysqli_connect('localhost','root','','guests') or die("error connecting to
                             
                         </div>
                     </div>
-                </div> <!-- end of col md-6 -->
-            <!-- </div>end of row -->
-
-
-                
-                <div class = "col-md-6" style = "">
-                    <div id="after_ajax">
-                        <div class="row">
-                            <div class = "col-md-12" style = "">
-                                <h1>Guest List</h1>
-                            </div>
+                </div>
+                <div class = "col-md-6">
+                    <div class="row">
+                        <div class = "col-md-12">
+                            <h1>Guest List</h1>
                         </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <table class="table" id="table_id">
-                                        <thead>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table" id="table_id">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Name</th>
+                                        <th>Phone no.</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                        $guests = fetchTableData();
+                                        foreach ($guests as $guest) {
+                                        ?>
                                             <tr>
-                                                <th>#</th>
-                                                <th>Name</th>
-                                                <th>Phone no.</th>
-                                                <th>Status</th>
+                                                <td><?php echo $guest['id']; ?></td>
+                                                <td><?php echo $guest['name']; ?></td>
+                                                <td><?php echo $guest['phone']; ?></td>
+                                                <td><?php echo $guest['status']; ?></td>
                                             </tr>
-                                        </thead>
-                                    </table>
-                                </div>
-                            </div>
-                    </div><!-- end of after_ajax-->
-                 </div><!-- end of column-->
-            </div><!--end of row -->
-        </div><!--end of container-->
+                                        <?php
+                                        }
+                                    ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                 </div>
+            </div>
+        </div>
     </body> 
 </html>

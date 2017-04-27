@@ -7,31 +7,51 @@ $(document).ready(function() {
         } else if (!$('#email_id')[0].checkValidity()) {
             $('#email_id')[0].reportValidity();
         } else {
-            console.log('valid');
             var name = $("#name_id").val();
             var phone = $("#phone_id").val();
             var email = $("#email_id").val();
-            var dataString = 'name=' + name + '&phone=' + phone + '&email=' + email; // here the attribute in ''    
-            // signifies the element 'name'
-            console.log(name, phone, email);
+            var action = 'addSubscriber';
+            var dataString = 'action=' + action + '&name=' + name + '&phone=' + phone + '&email=' + email;
 
             $.ajax({
-                type: "Post",
-                url: "guest_db.php",
+                type: "POST",
+                url: "show_list.php",
                 data: dataString,
                 success: function(result) {
-                        console.log("below #form_id");
-                        var ctr = 1;
-                        var entry = "<tr><td>" + ctr + "</td><td>" + name + "</td><td>" + phone + "</td></tr>";
-                        $('#table_id').append(entry);
-                        $("#name_id").val('');
-                        $("#phone_id").val('');
-                        $("#email_id").val('');
-                        ctr++;
-                        console.log("ajax successful");
-                    } //end of success
-            }); // end of ajax
+                    if (result) {
+                        getUpdatedList();
+                    } else {
+                        console.log('some error occurred');
+                    }
+                }
+            });
         }
-
     });
-}); //end of ready
+});
+
+function getUpdatedList() {
+    $.ajax({
+        type: "POST",
+        url: "show_list.php",
+        data: 'action=getUpdatedList',
+        success: function(result) {
+            updateListTable(JSON.parse(result));
+        }
+    });
+}
+
+function updateListTable(subscribers) {
+    var html = '';
+    for (var i = 0; i < 10; i++) {
+        var subscriber = subscribers[i];
+        var row_html = '<tr>';
+        row_html += '<td>' + subscriber['id'] + '</td>';
+        row_html += '<td>' + subscriber['name'] + '</td>';
+        row_html += '<td>' + subscriber['phone'] + '</td>';
+        row_html += '<td>' + subscriber['status'] + '</td>';
+        row_html += '</tr>';
+        html += row_html;
+    }
+    $('#table_id tbody').html(html);
+
+}
