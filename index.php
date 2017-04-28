@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 
-<?php require_once "show_list.php"; ?>
+<?php require_once "functions.php"; 
+      require_once "mail_handling.php";   
+?>
 
 <html>
     <head>

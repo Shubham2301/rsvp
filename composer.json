@@ -4,6 +4,9 @@
     "type": "project",
     "require": {
         "mpdf/mpdf": "^6.1",
-        "drewm/mailchimp-api": "^2.4"
+        "drewm/mailchimp-api": "^2.4",
+        "jlinn/mandrill-api-php": "~1.0",
+        "guzzlehttp/guzzle": "^6.2",
+        "mandrill/mandrill": "^1.0"
     }
 }

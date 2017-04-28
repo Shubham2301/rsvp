@@ -15,7 +15,7 @@ $(document).ready(function() {
 
             $.ajax({
                 type: "POST",
-                url: "show_list.php",
+                url: "functions.php",
                 data: dataString,
                 success: function(result) {
                     if (result) {
@@ -32,7 +32,7 @@ $(document).ready(function() {
 function getUpdatedList() {
     $.ajax({
         type: "POST",
-        url: "show_list.php",
+        url: "functions.php",
         data: 'action=getUpdatedList',
         success: function(result) {
             updateListTable(JSON.parse(result));
