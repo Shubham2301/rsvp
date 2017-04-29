@@ -15,7 +15,7 @@ $(document).ready(function() {
 
             $.ajax({
                 type: "POST",
-                url: "functions.php",
+                url: "ajax.php",
                 data: dataString,
                 success: function(result) {
                     if (result) {
@@ -32,7 +32,7 @@ $(document).ready(function() {
 function getUpdatedList() {
     $.ajax({
         type: "POST",
-        url: "functions.php",
+        url: "ajax.php",
         data: 'action=getUpdatedList',
         success: function(result) {
             updateListTable(JSON.parse(result));
@@ -53,5 +53,4 @@ function updateListTable(subscribers) {
         html += row_html;
     }
     $('#table_id tbody').html(html);
-
 }
