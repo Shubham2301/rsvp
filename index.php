@@ -63,7 +63,7 @@
                                 
                                 <button type="reject" name="Cancel" class="btn btn-danger">Cancel</button>
                                 </br>
-                                <a href="ex1.php" target="_blank">Click to see full guest list</a>
+                                <a href="pdf.php" target="_blank">Click to see full guest list</a>
                             </form>
                             
                         </div>

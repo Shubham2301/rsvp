@@ -18,10 +18,12 @@ $(document).ready(function() {
                 url: "ajax.php",
                 data: dataString,
                 success: function(result) {
-                    if (result) {
+                    if (result == 'success') {
                         getUpdatedList();
+                    } else if (result.match(/duplicate_entry/gi)) {
+                        alert('Input values already registered.')
                     } else {
-                        console.log('some error occurred');
+                        console.log('some error occured. Failed.')
                     }
                 }
             });
@@ -42,6 +44,9 @@ function getUpdatedList() {
 
 function updateListTable(subscribers) {
     var html = '';
+    //var count = getEntriesCount();
+
+
     for (var i = 0; i < 10; i++) {
         var subscriber = subscribers[i];
         var row_html = '<tr>';
@@ -53,4 +58,5 @@ function updateListTable(subscribers) {
         html += row_html;
     }
     $('#table_id tbody').html(html);
+
 }

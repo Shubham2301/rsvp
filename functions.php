@@ -16,22 +16,33 @@ function fetchTableData(){
 function addSubscriber($name, $phone, $email){
 	global $db;
 	$token = generateToken();
+	// $query = "SELECT * FROM data where email='".$email."' OR phone= '".$phone."'";
+	// $result = mysql_query($db,$query);
+	// if(mysql_num_rows($result) > 0){
+ //     echo "A record already exists."; 
+     
+ //    }
+	// echo $token;
 	$sql = "INSERT INTO data (name,phone,email,token) VALUES ('". $name ."','". $phone ."','". $email ."' ,'". $token ."')";
 	if (mysqli_query($db, $sql)) {
 		$mail = sendMail(mysqli_insert_id($db), $token);
-		return true;
+		return 'success';
 	} else {
-		echo mysqli_error($db);
-		return false;
+		if(mysqli_errno($db) == 1062){
+			return 'duplicate_entry';
+		}
 	}
+	return 'failure';
 }
+
+
 
 function sendMail($user_id, $token){
 	require_once __DIR__ . '/vendor/mandrill/mandrill/src/Mandrill.php';
 	try {
 
 	    $mandrill = new Mandrill('v0tqtpCwhDCIOLFe5Hw-gA');
-	    $confirm_link = '<a href="http://rsvpt.dev/rsvp_confirm.php?token=' . $token . '&user_id=' . $user_id . '">Confirm your email</a>';
+	    $confirm_link = '<a href="http://rsvpt.dev/rsvp_confirm.php?token=' . urlencode("$token") . '&user_id=' . $user_id . '">Confirm your email</a>';
 
 	    $message = array(
 	        'html' => "<p>You are invited to the event</br>click this link to confirm RSVP</br>" . $confirm_link . "</p>",
@@ -87,9 +98,12 @@ function displayAlreadyConfirmed() {
 	echo 'Good News! you have already confirmed your email';
 }
 
-// function getCurrentSubscriber(){
-// 	$subscribers= array();
-// 	array_push($subscribers, $_POST['email']);
-// 	array_push($subscribers, $_POST['name']);
-// 	return $subscribers;
+// function to get number of entries if they are less than 10
+// function getEntriesCount(){
+// 	global $db;
+// 	$query= "SELECT COUNT(DISTINCT id) AS total FROM data;";
+// 	$result=mysqli_query($db,$query) or die('Error SQL!'.$query.'<br>'.mysqli_error());
+// 	var_dump($result["total"]);
+// 	die();
+// 	return $result["total"];
 // }

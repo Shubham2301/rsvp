@@ -2,13 +2,13 @@
 
 require_once 'functions.php';
 
+
 if(isset($_GET['token']) && isset($_GET['user_id'])){
-	$token = $_GET['token'];
+	$token = ($_GET['token']);
+	// var_dump($token);
+	// die();
 	$user_id = $_GET['user_id'];
-	
 	$user_details = getUserDetails($user_id);
-	//var_dump($user_details);
-	//die();
 	$user_token = $user_details["0"]["token"];
 	$user_status = $user_details["0"]['status'];
 
@@ -22,3 +22,5 @@ if(isset($_GET['token']) && isset($_GET['user_id'])){
 		displayAlreadyConfirmed();
 	}
 }
+else
+echo "nothing to get";
