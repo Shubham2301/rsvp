@@ -18,7 +18,9 @@ $(document).ready(function() {
                 url: "ajax.php",
                 data: dataString,
                 success: function(result) {
-                    if (result == 'success') {
+                    console.log("I am here");
+                    if (result.match(/success/gi)) {
+                        console.log("getUpdatedList will execute");
                         getUpdatedList();
                     } else if (result.match(/duplicate_entry/gi)) {
                         alert('Input values already registered.')
@@ -46,8 +48,9 @@ function updateListTable(subscribers) {
     var html = '';
     //var count = getEntriesCount();
 
-
-    for (var i = 0; i < 10; i++) {
+    var length = subscribers.length;
+    console.log(length);
+    for (var i = 0; i < length; i++) {
         var subscriber = subscribers[i];
         var row_html = '<tr>';
         row_html += '<td>' + subscriber['id'] + '</td>';

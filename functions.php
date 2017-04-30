@@ -16,16 +16,10 @@ function fetchTableData(){
 function addSubscriber($name, $phone, $email){
 	global $db;
 	$token = generateToken();
-	// $query = "SELECT * FROM data where email='".$email."' OR phone= '".$phone."'";
-	// $result = mysql_query($db,$query);
-	// if(mysql_num_rows($result) > 0){
- //     echo "A record already exists."; 
-     
- //    }
-	// echo $token;
+	
 	$sql = "INSERT INTO data (name,phone,email,token) VALUES ('". $name ."','". $phone ."','". $email ."' ,'". $token ."')";
 	if (mysqli_query($db, $sql)) {
-		$mail = sendMail(mysqli_insert_id($db), $token);
+		$mail = sendMail(mysqli_insert_id($db), $token,$name,$email);
 		return 'success';
 	} else {
 		if(mysqli_errno($db) == 1062){
@@ -37,7 +31,7 @@ function addSubscriber($name, $phone, $email){
 
 
 
-function sendMail($user_id, $token){
+function sendMail($user_id, $token,$name,$email){
 	require_once __DIR__ . '/vendor/mandrill/mandrill/src/Mandrill.php';
 	try {
 
@@ -52,8 +46,8 @@ function sendMail($user_id, $token){
 	        'from_name' => 'Shubham',
 	        'to' => array(
 	            array(
-	                'email' => 'shubhamjoshi2301@gmail.com',
-	                'name' => 'Shubham',
+	                'email' => "$email",
+	                'name' => "$name",
 	                'type' => 'to'
 	            )
 	        ),
