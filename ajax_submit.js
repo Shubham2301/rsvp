@@ -49,10 +49,7 @@ function getUpdatedList() {
 
 function updateListTable(subscribers) {
     var html = '';
-    //var count = getEntriesCount();
-
     var length = subscribers.length;
-    console.log(length);
     for (var i = 0; i < length; i++) {
         var subscriber = subscribers[i];
         var row_html = '<tr>';
@@ -68,6 +65,7 @@ function updateListTable(subscribers) {
 }
 
 function getSuccessAlert() {
-    $("alert").addClass("in");
+    console.log("inside get success alert");
+    $(".alert").addClass("in");
     return true;
 }

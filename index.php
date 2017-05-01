@@ -33,7 +33,7 @@
                 </ul>
             </div>
         </nav>
-        <div class="alert alert-success fade " role="alert" id="success_alert" ><STRONG>Success</STRONG>Your have successfully registered to our guest list.</div>
+        <div class="alert alert-success fade " role="alert" id="success_alert" ><STRONG>Success:</STRONG>Your have successfully registered to our guest list.</div>
         <div class = "container">
             <div class = "row">
                 <div class = "col-md-6">

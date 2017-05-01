@@ -36,10 +36,11 @@ function sendMail($user_id, $token,$name,$email){
 	try {
 
 	    $mandrill = new Mandrill('v0tqtpCwhDCIOLFe5Hw-gA');
-	    $confirm_link = '<a href="http://rsvpt.dev/rsvp_confirm.php?token=' . urlencode("$token") . '&user_id=' . $user_id . '">Confirm your email</a>';
+	    $encrypt=openssl_encrypt("$token", "AES-256-CBC", 'This is my secret key');
+	    $confirm_link = '<a href="http://rsvpt.dev/rsvp_confirm.php?token=' . "$encrypt" . '&user_id=' . $user_id . '">Confirm your email</a>';
 
 	    $message = array(
-	        'html' => "<p>You are invited to the event</br>click this link to confirm RSVP</br>" . $confirm_link . "</p>",
+	        'html' => "<p>You are invited to the event.</br>click this link to confirm RSVP</br>" . $confirm_link . "</p>",
 	        // 'text' => 'Sending test mail',
 	        'subject' => 'Confirm your email',
 	        'from_email' => 'shubham@coloredcow.com',
@@ -52,7 +53,7 @@ function sendMail($user_id, $token,$name,$email){
 	            )
 	        ),
 	    );
-	    $result = $mandrill->messages->send($message);
+	   $result = $mandrill->messages->send($message);
 	    return true;
 	} 
 	catch(Mandrill_Error $e) {
@@ -80,8 +81,8 @@ function displayRSVPSuccess($user_id) {
 	global $db;
 	$query= "UPDATE `data` SET `status`='".'confirmed'."' WHERE `id`	='".$user_id."'";
 	$update=mysqli_query($db,$query) or die('Error SQL!'.$query.'<br>'.mysqli_error());
-	var_dump($update);
-	//echo 'your email has been confirmed';
+	//var_dump($update);
+	echo 'your email has been confirmed';
 }
 
 function displayRSVPFailure() {
@@ -92,12 +93,3 @@ function displayAlreadyConfirmed() {
 	echo 'Good News! you have already confirmed your email';
 }
 
-// function to get number of entries if they are less than 10
-// function getEntriesCount(){
-// 	global $db;
-// 	$query= "SELECT COUNT(DISTINCT id) AS total FROM data;";
-// 	$result=mysqli_query($db,$query) or die('Error SQL!'.$query.'<br>'.mysqli_error());
-// 	var_dump($result["total"]);
-// 	die();
-// 	return $result["total"];
-// }
