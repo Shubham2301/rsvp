@@ -12,15 +12,18 @@ $(document).ready(function() {
             var email = $("#email_id").val();
             var action = 'addSubscriber';
             var dataString = 'action=' + action + '&name=' + name + '&phone=' + phone + '&email=' + email;
+            $("#name_id").val("");
+            $("#phone_id").val("");
+            $("#email_id").val("");
 
             $.ajax({
                 type: "POST",
                 url: "ajax.php",
                 data: dataString,
                 success: function(result) {
-                    console.log("I am here");
                     if (result.match(/success/gi)) {
                         console.log("getUpdatedList will execute");
+                        getSuccessAlert();
                         getUpdatedList();
                     } else if (result.match(/duplicate_entry/gi)) {
                         alert('Input values already registered.')
@@ -62,4 +65,9 @@ function updateListTable(subscribers) {
     }
     $('#table_id tbody').html(html);
 
+}
+
+function getSuccessAlert() {
+    $("alert").addClass("in");
+    return true;
 }
