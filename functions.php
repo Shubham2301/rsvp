@@ -81,7 +81,6 @@ function displayRSVPSuccess($user_id) {
 	global $db;
 	$query= "UPDATE `data` SET `status`='".'confirmed'."' WHERE `id`	='".$user_id."'";
 	$update=mysqli_query($db,$query) or die('Error SQL!'.$query.'<br>'.mysqli_error());
-	//var_dump($update);
 	echo 'your email has been confirmed';
 }
 
@@ -93,3 +92,8 @@ function displayAlreadyConfirmed() {
 	echo 'Good News! you have already confirmed your email';
 }
 
+function displayRSVPDeclined($user_id) {
+	global $db;
+	$query= "UPDATE `data` SET `status`='".'Declined'."' WHERE `id`	='".$user_id."'";
+	$update=mysqli_query($db,$query) or die('Error SQL!'.$query.'<br>'.mysqli_error());
+}

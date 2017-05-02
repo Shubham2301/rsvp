@@ -58,9 +58,13 @@ function updateListTable(subscribers) {
         row_html += '<td>' + subscriber['phone'] + '</td>';
         row_html += '<td>' + subscriber['status'] + '</td>';
         row_html += '</tr>';
+        if (subscriber['status'] == 'confirmed') {
+            $(".btn").removeClass("btn-warning");
+            $(".btn").addClass("btn-success");
+        }
         html += row_html;
     }
-    $('#table_id tbody').html(html);
+    //$('#table_id tbody').html(html);
 
 }
 

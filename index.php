@@ -92,11 +92,22 @@
                                         $guests = fetchTableData();
                                         foreach ($guests as $guest) {
                                         ?>
+                                            <?php if($guest['status']=='confirmed'){
+                                                     $status_class='btn-success'; 
+                                                  }
+                                                  else if ($guest['status']=='pending'){
+                                                    $status_class='btn-warning'; 
+                                                  } 
+                                                  else
+                                                  $status_class='btn-danger';  
+                                            ?>        
+                                                   
+                                         
                                             <tr>
                                                 <td><?php echo $guest['id']; ?></td>
                                                 <td><?php echo $guest['name']; ?></td>
                                                 <td><?php echo $guest['phone']; ?></td>
-                                                <td><?php echo $guest['status']; ?></td>
+                                                <td><button type = "button" class = "btn <?php echo "$status_class"; ?>" ><?php echo $guest['status']; ?> </button></td> 
                                             </tr>
                                         <?php
                                         }

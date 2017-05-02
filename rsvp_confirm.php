@@ -6,6 +6,7 @@ $date_obj=date_create("2017-04-30");
 $date=date_format($date_obj,"Y/m/d");
 $last_date=strtotime($date);
 $current_date=strtotime(date("Y-m-d"));
+
 if($last_date>$current_date)
 	{
 	if(isset($_GET['token']) && isset($_GET['user_id'])){
@@ -30,6 +31,3 @@ if($last_date>$current_date)
 	echo "nothing to get";
 	}
 }	
-else{
-	echo ("The last date of registering your response is over.");
-}
