@@ -64,7 +64,7 @@
                                 
                                 <button type="reject" name="Cancel" class="btn btn-danger">Cancel</button>
                                 </br>
-                                <a href="pdf.php" target="_blank">Click to see full guest list</a>
+                                <a href="pdf.php" target="_blank">Click to see full guest list</a> 
                             </form>
                             
                         </div>
@@ -93,7 +93,7 @@
                                         foreach ($guests as $guest) {
                                         ?>
                                             <?php if($guest['status']=='confirmed'){
-                                                     $status_class='btn-success'; 
+                                                     $status_class='btn-danger'; 
                                                   }
                                                   else if ($guest['status']=='pending'){
                                                     $status_class='btn-warning'; 

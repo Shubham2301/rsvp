@@ -36,9 +36,10 @@ function sendMail($user_id, $token,$name,$email){
 	try {
 
 	    $mandrill = new Mandrill('v0tqtpCwhDCIOLFe5Hw-gA');
-	    $encrypt=openssl_encrypt("$token", "AES-256-CBC", 'This is my secret key');
-	    $confirm_link = '<a href="http://rsvpt.dev/rsvp_confirm.php?token=' . "$encrypt" . '&user_id=' . $user_id . '">Confirm your email</a>';
-
+	    $encrypt=openssl_encrypt("$token", "AES-256-CBC", 'sndja78y1241djht152e1');
+	    //$encrypt_uid=openssl_encrypt("$user_id", "AES-256-CBC", 'secret key');
+	    $hostname = getenv('HTTP_HOST');
+	    $confirm_link = '<a href="http://'.$hostname.'/rsvp_confirm.php?token=' . "$encrypt" . '&user_id=' . $encrypt . '">Confirm your email</a>';
 	    $message = array(
 	        'html' => "<p>You are invited to the event.</br>click this link to confirm RSVP</br>" . $confirm_link . "</p>",
 	        // 'text' => 'Sending test mail',
@@ -77,23 +78,43 @@ function getUserDetails($user_id){
 	// return true/false
 }
 
-function displayRSVPSuccess($user_id) {
-	global $db;
-	$query= "UPDATE `data` SET `status`='".'confirmed'."' WHERE `id`	='".$user_id."'";
-	$update=mysqli_query($db,$query) or die('Error SQL!'.$query.'<br>'.mysqli_error());
+function displayRSVPSuccess() 
+{
 	echo 'your email has been confirmed';
 }
 
-function displayRSVPFailure() {
+function displayRSVPFailure() 
+{
 	echo 'there has been some error. Please try again or contact our support team.';
 }
 
-function displayAlreadyConfirmed() {
+function displayAlreadyConfirmed() 
+{
 	echo 'Good News! you have already confirmed your email';
 }
 
-function displayRSVPDeclined($user_id) {
-	global $db;
-	$query= "UPDATE `data` SET `status`='".'Declined'."' WHERE `id`	='".$user_id."'";
-	$update=mysqli_query($db,$query) or die('Error SQL!'.$query.'<br>'.mysqli_error());
+function displayRSVPDeclined() 
+{
+	echo "the last date to register your response is over";
 }
+
+function changeStatus($user_id,$status)
+{
+	global $db;
+	if ($status=='confirmed')
+	{
+		$query= "UPDATE `data` SET `status`='".'confirmed'."' WHERE `id`	='".$user_id."'";
+		$update=mysqli_query($db,$query) or die('Error SQL!'.$query.'<br>'.mysqli_error());
+		displayRSVPSuccess();
+
+	}
+	else if($status=='declined')
+	{
+		$query= "UPDATE `data` SET `status`='".'declined'."' WHERE `id`	='".$user_id."'";
+		$update=mysqli_query($db,$query) or die('Error SQL!'.$query.'<br>'.mysqli_error());
+		displayRSVPDeclined();
+	}
+
+}
+
+

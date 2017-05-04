@@ -1,53 +1,48 @@
 $(document).ready(function() {
     $('#save_id').on('click', function() {
-        if (!$('#name_id')[0].checkValidity()) {
-            $('#name_id')[0].reportValidity();
-        } else if (!$('#phone_id')[0].checkValidity()) {
-            $('#phone_id')[0].reportValidity();
-        } else if (!$('#email_id')[0].checkValidity()) {
-            $('#email_id')[0].reportValidity();
-        } else {
-            var name = $("#name_id").val();
-            var phone = $("#phone_id").val();
-            var email = $("#email_id").val();
-            var action = 'addSubscriber';
-            var dataString = 'action=' + action + '&name=' + name + '&phone=' + phone + '&email=' + email;
-            $("#name_id").val("");
-            $("#phone_id").val("");
-            $("#email_id").val("");
+        var reg_form = $('#reg_form');
 
-            $.ajax({
-                type: "POST",
-                url: "ajax.php",
-                data: dataString,
-                success: function(result) {
-                    if (result.match(/success/gi)) {
-                        console.log("getUpdatedList will execute");
-                        getSuccessAlert();
-                        getUpdatedList();
-                    } else if (result.match(/duplicate_entry/gi)) {
-                        alert('Input values already registered.')
-                    } else {
-                        console.log('some error occured. Failed.')
-                    }
-                }
-            });
+        if (!reg_form[0].checkValidity()) {
+            reg_form[0].reportValidity();
+            return;
         }
+
+        var dataString = 'action=addSubscriber&' + reg_form.serialize();
+
+        $.ajax({
+            type: "POST",
+            url: "ajax.php",
+            data: dataString,
+            success: function(result) {
+                if (result.match(/success/gi)) {
+                    console.log("getUpdatedList will execute");
+                    showSuccessAlert();
+                    showUpdatedList();
+                } else if (result.match(/duplicate_entry/gi)) {
+                    alert('Input values already registered.')
+                } else {
+                    console.log('some error occured. Failed.');
+                }
+                $("#reg_form")[0].reset();
+            }
+        });
     });
 });
 
-function getUpdatedList() {
+function showUpdatedList() {
     $.ajax({
         type: "POST",
         url: "ajax.php",
         data: 'action=getUpdatedList',
         success: function(result) {
-            updateListTable(JSON.parse(result));
+            console.log("get getUpdatedList ajax executed");
+            showListTable(JSON.parse(result));
         }
     });
 }
 
-function updateListTable(subscribers) {
+function showListTable(subscribers) {
+    console.log("abcd");
     var html = '';
     var length = subscribers.length;
     for (var i = 0; i < length; i++) {
@@ -58,18 +53,13 @@ function updateListTable(subscribers) {
         row_html += '<td>' + subscriber['phone'] + '</td>';
         row_html += '<td>' + subscriber['status'] + '</td>';
         row_html += '</tr>';
-        if (subscriber['status'] == 'confirmed') {
-            $(".btn").removeClass("btn-warning");
-            $(".btn").addClass("btn-success");
-        }
         html += row_html;
     }
-    //$('#table_id tbody').html(html);
+    $('#table_id tbody').html(html);
 
 }
 
-function getSuccessAlert() {
+function showSuccessAlert() {
     console.log("inside get success alert");
     $(".alert").addClass("in");
-    return true;
 }
