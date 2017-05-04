@@ -8,17 +8,10 @@
     <head>
         <title> RSVP </title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvy-xsfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-        
-        <!-- cdn for validations-->
-        <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-        <script src='http://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js'></script>
-
         <script type="text/javascript" src="ajax_submit.js" async defer></script>
-        <!-- <script type="text/javascript" src="field_validation.js"></script> -->
+        
 
     </head>
 
@@ -90,12 +83,15 @@
                                 <tbody>
                                     <?php
                                         $guests = fetchTableData();
-                                        foreach ($guests as $guest) {
-                                        ?>
-                                            <?php if($guest['status']=='confirmed'){
-                                                     $status_class='btn-danger'; 
-                                                  }
-                                                  else if ($guest['status']=='pending'){
+                                        foreach ($guests as $guest) 
+                                        {
+                                    ?>
+                                            <?php if($guest['status']=='confirmed')
+                                                  {
+                                                     $status_class='btn-success'; 
+                                                  } 
+                                                  else if ($guest['status']=='pending')
+                                                  {
                                                     $status_class='btn-warning'; 
                                                   } 
                                                   else
@@ -109,7 +105,7 @@
                                                 <td><?php echo $guest['phone']; ?></td>
                                                 <td><button type = "button" class = "btn <?php echo "$status_class"; ?>" ><?php echo $guest['status']; ?> </button></td> 
                                             </tr>
-                                        <?php
+                                    <?php
                                         }
                                     ?>
                                 </tbody>

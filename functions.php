@@ -39,7 +39,7 @@ function sendMail($user_id, $token,$name,$email){
 	    $encrypt=openssl_encrypt("$token", "AES-256-CBC", 'sndja78y1241djht152e1');
 	    //$encrypt_uid=openssl_encrypt("$user_id", "AES-256-CBC", 'secret key');
 	    $hostname = getenv('HTTP_HOST');
-	    $confirm_link = '<a href="http://'.$hostname.'/rsvp_confirm.php?token=' . "$encrypt" . '&user_id=' . $encrypt . '">Confirm your email</a>';
+	    $confirm_link = '<a href="http://'.$hostname.'/rsvp_confirm.php?token=' . "$encrypt" . '&user_id=' . "$user_id" . '">Confirm your email</a>';
 	    $message = array(
 	        'html' => "<p>You are invited to the event.</br>click this link to confirm RSVP</br>" . $confirm_link . "</p>",
 	        // 'text' => 'Sending test mail',
