@@ -88,14 +88,14 @@
                                     ?>
                                             <?php if($guest['status']=='confirmed')
                                                   {
-                                                     $status_class='btn-success'; 
+                                                     $status_class='label-success'; 
                                                   } 
                                                   else if ($guest['status']=='pending')
                                                   {
-                                                    $status_class='btn-warning'; 
+                                                    $status_class='label-warning'; 
                                                   } 
                                                   else
-                                                  $status_class='btn-danger';  
+                                                  $status_class='label-danger';  
                                             ?>        
                                                    
                                          
@@ -103,7 +103,7 @@
                                                 <td><?php echo $guest['id']; ?></td>
                                                 <td><?php echo $guest['name']; ?></td>
                                                 <td><?php echo $guest['phone']; ?></td>
-                                                <td><button type = "button" class = "btn <?php echo "$status_class"; ?>" ><?php echo $guest['status']; ?> </button></td> 
+                                                <td><span class="label <?php echo "$status_class"; ?>" ><?php echo $guest['status']; ?> </span></td> 
                                             </tr>
                                     <?php
                                         }
