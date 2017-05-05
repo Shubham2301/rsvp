@@ -29,7 +29,7 @@
         <div class="alert alert-success fade " role="alert" id="success_alert" ><STRONG>Success:</STRONG>Your have successfully registered to our guest list.</div>
         <div class = "container">
             <div class = "row">
-                <div class = "col-md-6">
+                <div class = "col-md-4">
                     <div class = "row">
                         <div class="col-md-12">
                             <h1>Register New Guest</h1>
@@ -63,10 +63,19 @@
                         </div>
                     </div>
                 </div>
-                <div class = "col-md-6">
+                <div class = "col-md-8">
                     <div class="row">
                         <div class = "col-md-12">
                             <h1>Guest List</h1>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class = "col-md-12">
+                            <label for="status:">status</label>
+                            <br>
+                            <input type="radio" name="status" value="confirmed" checked> Confirmed<br>
+                            <input type="radio" name="status" value="pending"> Pending<br>
+                            <input type="radio" name="status" value="declined"> Declined  
                         </div>
                     </div>
                     <div class="row">
