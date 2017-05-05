@@ -15,7 +15,6 @@ $(document).ready(function() {
             data: dataString,
             success: function(result) {
                 if (result.match(/success/gi)) {
-                    console.log("getUpdatedList will execute");
                     showSuccessAlert();
                     showUpdatedList();
                 } else if (result.match(/duplicate_entry/gi)) {
@@ -35,14 +34,12 @@ function showUpdatedList() {
         url: "ajax.php",
         data: 'action=getUpdatedList',
         success: function(result) {
-            console.log("get getUpdatedList ajax executed");
             showListTable(JSON.parse(result));
         }
     });
 }
 
 function showListTable(subscribers) {
-    console.log("abcd");
     var html = '';
     var length = subscribers.length;
     for (var i = 0; i < length; i++) {
@@ -51,7 +48,7 @@ function showListTable(subscribers) {
         row_html += '<td>' + subscriber['id'] + '</td>';
         row_html += '<td>' + subscriber['name'] + '</td>';
         row_html += '<td>' + subscriber['phone'] + '</td>';
-        row_html += '<td>' + subscriber['status'] + '</td>';
+        row_html += '<td><span class label label-success>' + subscriber['status'] + '</span></td>';
         row_html += '</tr>';
         html += row_html;
     }
@@ -60,6 +57,5 @@ function showListTable(subscribers) {
 }
 
 function showSuccessAlert() {
-    console.log("inside get success alert");
     $(".alert").addClass("in");
 }

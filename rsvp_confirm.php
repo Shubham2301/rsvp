@@ -2,7 +2,7 @@
 
 require_once 'functions.php';
 
-$date_obj=date_create("2017-05-30");
+$date_obj=date_create("2017-04-30");
 $date=date_format($date_obj,"Y/m/d");
 $last_date=strtotime($date);
 $current_date=strtotime(date("Y-m-d"));
