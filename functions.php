@@ -119,4 +119,17 @@ function changeStatus($user_id,$status)
 
 }
 
+function showConfirmedStatusList()
+{
+	global $db;
+	$query="SELECT * FROM data WHERE status='"."confirmed"."'";
+	$list=mysqli_query($db,$query) or die('SQL ERROR!!'.$query.'<br>'.mysql_error());
+	$display_list=array();
+	while($row= mysqli_fetch_assoc($list))
+	{
+		array_push($display_list,$row);
+	}
+	return $display_list;
+}
+
 

@@ -10,8 +10,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvy-xsfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-        <script type="text/javascript" src="ajax_submit.js" async defer></script>
-        <script type="text/javascript" src="filter.js" async defer></script>
+        <script type="text/javascript" src="main.js" async defer></script>
 
     </head>
 
@@ -45,7 +44,7 @@
                                 </br>
                                 <div class="form-group">
                                     <label for="phone:">phone</label>
-                                    <input type="number" class="form-control" name="phone" id="phone_id" placeholder="xxxxxxxxxx" pattern="^\d{10}$" required="true">
+                                    <input type="number" min="0" class="form-control" name="phone" id="phone_id" placeholder="xxxxxxxxxx" pattern="^\d{10}$" required="true">
                                 </div>
                                 </br>
                                 <div class="form-group">
@@ -71,13 +70,31 @@
                     </div>
                     <div class="row">
                         <div class = "col-md-12">
-                            <label for="status:">status</label>
-                            <br>
-                            <input type="radio" name="status" value="confirmed"  onclick="confirmed_list()"/> Confirmed
-                            </br>
-                            <input type="radio" name="status" value="pending"> Pending
-                            <br>
-                            <input type="radio" name="status" value="declined"> Declined  
+                            <form class="form-inline">
+                                <div class="form-group">
+                                    <label for="#status">Status</label> <br>
+                                    <input type="radio" name="status" value="all" id="status" checked> All
+                                    <br>
+                                    <input type="radio" name="status" value="pending"> pending
+                                    <br>
+                                    <input type="radio" name="status" value="confirmed"> confirmed 
+                                    <br>
+                                    <input type="radio" name="status" value="declined"> declined  
+                                </div>
+                                <div class="form-group">
+                                    <label  for="gender">Gender</label>
+                                    <select name="gender">
+                                    <option value="all">All</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    </select>
+                                </div>
+                                <div class="checkbox">
+                                    <label for="#limit" >Limit</label>
+                                    <input type="number" min="0" id "limit"> 
+                                </div>
+                                <button type="submit" class="btn btn-primary">Login</button>
+                            </form>
                         </div>
                     </div>
                     <div class="row">

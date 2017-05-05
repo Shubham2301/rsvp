@@ -59,3 +59,8 @@ function showListTable(subscribers) {
 function showSuccessAlert() {
     $(".alert").addClass("in");
 }
+
+function confirmed_list() {
+    alert("confirm list printed");
+
+}
