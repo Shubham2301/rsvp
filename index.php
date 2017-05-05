@@ -11,7 +11,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvy-xsfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
         <script type="text/javascript" src="ajax_submit.js" async defer></script>
-        
+        <script type="text/javascript" src="filter.js" async defer></script>
 
     </head>
 
@@ -73,8 +73,10 @@
                         <div class = "col-md-12">
                             <label for="status:">status</label>
                             <br>
-                            <input type="radio" name="status" value="confirmed" checked> Confirmed<br>
-                            <input type="radio" name="status" value="pending"> Pending<br>
+                            <input type="radio" name="status" value="confirmed"  onclick="confirmed_list()"/> Confirmed
+                            </br>
+                            <input type="radio" name="status" value="pending"> Pending
+                            <br>
                             <input type="radio" name="status" value="declined"> Declined  
                         </div>
                     </div>
