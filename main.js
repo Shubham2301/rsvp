@@ -39,6 +39,25 @@ function showUpdatedList() {
     });
 }
 
+
+function showSuccessAlert() {
+    $(".alert").addClass("in");
+}
+
+$('#applyfilter_id').on('click', function() {
+    var filter_form = $('#filter_form');
+    var dataString = 'action=applyFilter&' + filter_form.serialize();
+    $.ajax({
+        type: "POST",
+        url: "ajax.php",
+        data: dataString,
+        success: function(result) {
+            //console.log(result);
+            showListTable(JSON.parse(result));
+        }
+    });
+});
+
 function showListTable(subscribers) {
     var html = '';
     var length = subscribers.length;
@@ -53,14 +72,5 @@ function showListTable(subscribers) {
         html += row_html;
     }
     $('#table_id tbody').html(html);
-
-}
-
-function showSuccessAlert() {
-    $(".alert").addClass("in");
-}
-
-function confirmed_list() {
-    alert("confirm list printed");
 
 }

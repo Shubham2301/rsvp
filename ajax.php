@@ -15,10 +15,14 @@ if(isset($_POST['action']))
 				print json_encode(addSubscriber($_POST['name'], $_POST['phone'], $_POST['email']));
 				break;
 			}
-			else{
+			else
+			{
 				echo "Error in adding subscriber";
 				break;
 			}
+		case 'applyFilter': 
+			print json_encode(applyFilter($_POST['status'],$_POST['gender'],$_POST['limit']));
+			break;	
 	}
 }
 ?>

@@ -44,7 +44,7 @@
                                 </br>
                                 <div class="form-group">
                                     <label for="phone:">phone</label>
-                                    <input type="number" min="0" class="form-control" name="phone" id="phone_id" placeholder="xxxxxxxxxx" pattern="^\d{10}$" required="true">
+                                    <input type="number" onkeypress="return event.charCode >= 48" min="1" class="form-control" name="phone" id="phone_id" placeholder="xxxxxxxxxx" pattern="^\d{10}$" required="true">
                                 </div>
                                 </br>
                                 <div class="form-group">
@@ -55,6 +55,7 @@
                                 <button type="button" name="save" id="save_id" class="btn btn-success">Save</button>
                                 
                                 <button type="reject" name="Cancel" class="btn btn-danger">Cancel</button>
+                                </br>
                                 </br>
                                 <a href="pdf.php" target="_blank">Click to see full guest list</a> 
                             </form>
@@ -70,9 +71,9 @@
                     </div>
                     <div class="row">
                         <div class = "col-md-12">
-                            <form class="form-inline">
-                                <div class="form-group">
-                                    <label for="#status">Status</label> <br>
+                            <form class="form-inline" id="filter_form">
+                                <div class="form-group"  >
+                                    <label for="status">Status</label> <br>
                                     <input type="radio" name="status" value="all" id="status" checked> All
                                     <br>
                                     <input type="radio" name="status" value="pending"> pending
@@ -81,19 +82,24 @@
                                     <br>
                                     <input type="radio" name="status" value="declined"> declined  
                                 </div>
-                                <div class="form-group">
-                                    <label  for="gender">Gender</label>
+                                <div class="form-group select">
+                                    <label  for="gender">Gender</label> 
+                                    <br>
                                     <select name="gender">
                                     <option value="all">All</option>
                                     <option value="male">Male</option>
                                     <option value="female">Female</option>
                                     </select>
                                 </div>
-                                <div class="checkbox">
-                                    <label for="#limit" >Limit</label>
-                                    <input type="number" min="0" id "limit"> 
+                                <div class="form-group"> 
+                                    <label for="limit" >Limit</label> 
+                                    <br>   
+                                    <input type="number" onkeypress="return event.charCode >= 48" value="10" min="0" name="limit" id="limit_id"> 
                                 </div>
-                                <button type="submit" class="btn btn-primary">Login</button>
+                                <br>    
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-primary" id="applyfilter_id">Apply Filters</button>
+                                </div>        
                             </form>
                         </div>
                     </div>

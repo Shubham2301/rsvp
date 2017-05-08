@@ -105,7 +105,7 @@ function changeStatus($user_id,$status)
 	global $db;
 	if ($status=='confirmed')
 	{
-		$query= "UPDATE `data` SET `status`='".'confirmed'."' WHERE `id`	='".$user_id."'";
+		$query= "UPDATE `data` SET `status`='".'confirmed'."' WHERE `id`='".$user_id."'";
 		$update=mysqli_query($db,$query) or die('Error SQL!'.$query.'<br>'.mysqli_error());
 		displayRSVPSuccess();
 
@@ -119,17 +119,40 @@ function changeStatus($user_id,$status)
 
 }
 
-function showConfirmedStatusList()
+function applyFilter($status,$gender,$limit)
 {
 	global $db;
-	$query="SELECT * FROM data WHERE status='"."confirmed"."'";
-	$list=mysqli_query($db,$query) or die('SQL ERROR!!'.$query.'<br>'.mysql_error());
+	$sql=array();
+	$limitation=array();
+	$tableName='data';
+
+	unset($sql);
+
+		if ($status != 'all') {
+		    $sql[] = "status = '$status'";
+		}
+		if ($gender != 'all') {
+		    $sql[] = "gender = '$gender'";
+		}
+		if ($limit) {
+		    $limitation[] = "limit = '$limit'";
+		}
+
+		$query = "SELECT * FROM $tableName ";
+
+		if (!empty($sql)) 
+		{ 
+		    $query .= ' WHERE ' . implode(' AND ', $sql ).'ORDER BY id DESC LIMIT limit';
+		}
+
+	$list=mysqli_query($db,$query) or die('SQL ERROR!! '.$query.'<br>'.mysqli_error($db));
 	$display_list=array();
 	while($row= mysqli_fetch_assoc($list))
 	{
 		array_push($display_list,$row);
 	}
 	return $display_list;
+	
 }
 
 
