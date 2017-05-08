@@ -11,6 +11,9 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvy-xsfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
         <script type="text/javascript" src="main.js" async defer></script>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="/resources/demos/style.css">
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     </head>
 
@@ -96,9 +99,20 @@
                                     <br>   
                                     <input type="number" onkeypress="return event.charCode >= 48" value="10" min="0" name="limit" id="limit_id"> 
                                 </div>
-                                <br>    
                                 <div class="form-group">
-                                    <button type="button" class="btn btn-primary" id="applyfilter_id">Apply Filters</button>
+                                    <label for="date-picker-start">Pick a starting date</label>
+                                    <br>
+                                    <input type="text" id="startDatePicker" name="start_date">
+                                </div>    
+                                 
+                                <div class="form-group">
+                                    <label for="date-picker-end">Pick a end date</label>
+                                    <br>
+                                    <input type="text" id="endDatePicker" name="end_date">
+                                </div>
+                                <br>  
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-primary " id="applyfilter_id">Apply Filters</button>
                                 </div>        
                             </form>
                         </div>
@@ -111,6 +125,8 @@
                                         <th>#</th>
                                         <th>Name</th>
                                         <th>Phone no.</th>
+                                        <th>Gender</th>
+                                        <th>Registration Date</th>
                                         <th>Status</th>
                                     </tr>
                                 </thead>
@@ -137,6 +153,8 @@
                                                 <td><?php echo $guest['id']; ?></td>
                                                 <td><?php echo $guest['name']; ?></td>
                                                 <td><?php echo $guest['phone']; ?></td>
+                                                <td><?php echo $guest['gender']; ?></td>
+                                                <td><?php echo $guest['reg_date']; ?></td>
                                                 <td><span class="label <?php echo "$status_class"; ?>" ><?php echo $guest['status']; ?> </span></td> 
                                             </tr>
                                     <?php

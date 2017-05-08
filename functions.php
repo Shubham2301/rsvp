@@ -119,7 +119,7 @@ function changeStatus($user_id,$status)
 
 }
 
-function applyFilter($status,$gender,$limit)
+function applyFilter($status,$gender,$limit,$startDate,$endDate)
 {
 	global $db;
 	$sql=array();
@@ -134,6 +134,12 @@ function applyFilter($status,$gender,$limit)
 		if ($gender != 'all') {
 		    $sql[] = "gender = '$gender'";
 		}
+		if($startDate) {
+			$sql[]="reg_date >= '$startDate'";
+		}
+		if($endDate) {
+			$sql[]="reg_date <= '$endDate'";
+		}
 		if ($limit) {
 		    $limitation[] = "limit = '$limit'";
 		}
@@ -142,8 +148,12 @@ function applyFilter($status,$gender,$limit)
 
 		if (!empty($sql)) 
 		{ 
-		    $query .= ' WHERE ' . implode(' AND ', $sql ).'ORDER BY id DESC LIMIT limit';
+		    $query .= ' WHERE ' . implode(' AND ', $sql ).' ORDER BY id DESC LIMIT ' ."$limit";
 		}
+		else
+		{
+			$query = 'SELECT * FROM data ORDER BY id DESC LIMIT ' . "$limit" ;
+		}	
 
 	$list=mysqli_query($db,$query) or die('SQL ERROR!! '.$query.'<br>'.mysqli_error($db));
 	$display_list=array();

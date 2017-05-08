@@ -20,8 +20,8 @@ if(isset($_POST['action']))
 				echo "Error in adding subscriber";
 				break;
 			}
-		case 'applyFilter': 
-			print json_encode(applyFilter($_POST['status'],$_POST['gender'],$_POST['limit']));
+		case 'applyFilter': 	
+			print json_encode(applyFilter($_POST['status'],$_POST['gender'],$_POST['limit'],$_POST['start_date'],$_POST['end_date']));
 			break;	
 	}
 }
