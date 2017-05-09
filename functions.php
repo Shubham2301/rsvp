@@ -13,11 +13,11 @@ function fetchTableData(){
 	return $guests;
 }
 
-function addSubscriber($name, $phone, $email){
+function addSubscriber($name, $phone, $email,$gender){
 	global $db;
 	$token = generateToken();
 	
-	$sql = "INSERT INTO data (name,phone,email,token) VALUES ('". $name ."','". $phone ."','". $email ."' ,'". $token ."')";
+	$sql = "INSERT INTO data (name,phone,email,token,gender) VALUES ('". $name ."','". $phone ."','". $email ."' ,'". $token ."','".$gender."')";
 	if (mysqli_query($db, $sql)) {
 		$mail = sendMail(mysqli_insert_id($db), $token,$name,$email);
 		return 'success';

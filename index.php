@@ -55,9 +55,15 @@
                                     <input type="email" class="form-control" name="email" id="email_id" placeholder="abc@def.com" required="true">
                                 </div>
                                  </br>
+                                 <div class="form-group">
+                                     <label for="gender">Gender: </label>
+                                     <input type="radio" name="gender" value="male" id="male">MALE
+                                     <input type="radio" name="gender" value="female" id="female">FEMALE
+                                 </div>
+                                 <br>
                                 <button type="button" name="save" id="save_id" class="btn btn-success">Save</button>
                                 
-                                <button type="reject" name="Cancel" class="btn btn-danger">Cancel</button>
+                                <button type="button" name="Cancel" class="btn btn-danger" id="clear_id">Cancel</button>
                                 </br>
                                 </br>
                                 <a href="pdf.php" target="_blank">Click to see full guest list</a> 
@@ -99,17 +105,17 @@
                                     <br>   
                                     <input type="number" onkeypress="return event.charCode >= 48" value="10" min="0" name="limit" id="limit_id"> 
                                 </div>
-                                <div class="form-group">
-                                    <label for="date-picker-start">Pick a starting date</label>
-                                    <br>
-                                    <input type="text" id="startDatePicker" name="start_date">
-                                </div>    
-                                 
-                                <div class="form-group">
-                                    <label for="date-picker-end">Pick a end date</label>
-                                    <br>
-                                    <input type="text" id="endDatePicker" name="end_date">
-                                </div>
+                                <div>
+                                    <div class="form-group">
+                                        <label for="date-picker-start">Pick a start date</label>
+                                        <input type="text" id="startDatePicker" name="start_date">
+                                    </div>
+                                    <br>    
+                                    <div class="form-group">
+                                        <label for="date-picker-end">Pick a end date</label>
+                                        <input type="text" id="endDatePicker" name="end_date">
+                                    </div>
+                                <div>
                                 <br>  
                                 <div class="form-group">
                                     <button type="button" class="btn btn-primary " id="applyfilter_id">Apply Filters</button>

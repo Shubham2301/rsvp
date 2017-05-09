@@ -1,4 +1,9 @@
 $(document).ready(function() {
+
+    $("#clear_id").on('click', function() {
+        $("#reg_form")[0].reset();
+    })
+
     $("#startDatePicker").datepicker({
         dateFormat: 'yy-mm-dd',
         changeMonth: true, //this option for allowing user to select month
@@ -10,12 +15,18 @@ $(document).ready(function() {
         changeYear: true //this option for allowing user to select from year range
     });
     $('#save_id').on('click', function() {
-        var reg_form = $('#reg_form');
 
+        var reg_form = $('#reg_form');
         if (!reg_form[0].checkValidity()) {
             reg_form[0].reportValidity();
             return;
         }
+
+        var input = this;
+        input.disabled = true;
+        setTimeout(function() {
+            input.disabled = false;
+        }, 3000);
 
         var dataString = 'action=addSubscriber&' + reg_form.serialize();
 
@@ -36,6 +47,7 @@ $(document).ready(function() {
             }
         });
     });
+
 });
 
 function showUpdatedList() {
@@ -53,6 +65,7 @@ function showUpdatedList() {
 function showSuccessAlert() {
     $(".alert").addClass("in");
 }
+
 
 $('#applyfilter_id').on('click', function() {
     var filter_form = $('#filter_form');
@@ -81,10 +94,18 @@ function showListTable(subscribers) {
         row_html += '<td>' + subscriber['phone'] + '</td>';
         row_html += '<td>' + subscriber['gender'] + '</td>';
         row_html += '<td>' + subscriber['reg_date'] + '</td>';
-        row_html += '<td><span class label label-success>' + subscriber['status'] + '</span></td>';
+        row_html += '<td class="label">' + subscriber['status'] + '</td>';
         row_html += '</tr>';
+
         html += row_html;
     }
     $('#table_id tbody').html(html);
+    if (subscriber['status'] == 'confirmed') {
+        $(".label").addClass("label-success");
+    } else if (subscriber['status'] == 'pending') {
+        $(".label").addClass("label-warning");
+    } else
+        $(".label").addClass("label-danger");
+
 
 }
