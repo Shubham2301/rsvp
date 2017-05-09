@@ -15,9 +15,10 @@ function fetchTableData(){
 
 function addSubscriber($name, $phone, $email,$gender){
 	global $db;
+	$reg_date=date("Y/m/d");
 	$token = generateToken();
 	
-	$sql = "INSERT INTO data (name,phone,email,token,gender) VALUES ('". $name ."','". $phone ."','". $email ."' ,'". $token ."','".$gender."')";
+	$sql = "INSERT INTO data (name,phone,email,token,gender,reg_date) VALUES ('". $name ."','". $phone ."','". $email ."' ,'". $token ."','".$gender."','".$reg_date."')";
 	if (mysqli_query($db, $sql)) {
 		$mail = sendMail(mysqli_insert_id($db), $token,$name,$email);
 		return 'success';
