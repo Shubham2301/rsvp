@@ -1,5 +1,51 @@
-<style type="text/css" > .inline {
-    margin: 2px;
-}
-
-</style>
+	 #user_status {
+	     margin: 10px;
+	     width: 170px;
+	     /*position: relative;*/
+	 }
+	 
+	 #user_gender {
+	     margin-left: 40px;
+	 }
+	 
+	 #list_limit {
+	     margin-left: 40px;
+	 }
+	 
+	 #date_picker {
+	     margin-top: 20px;
+	 }
+	 
+	 #start_dp {
+	     margin-bottom: 10px;
+	 }
+	 
+	 #all {
+	     float: left;
+	     margin-right: 10px;
+	     position: relative;
+	 }
+	 
+	 #pending {
+	     margin-left: 10px;
+	     float: right;
+	 }
+	 
+	 #confirmed {
+	     float: left;
+	     margin-right: 10px;
+	 }
+	 
+	 #declined {
+	     float: right;
+	     margin-left: 10px;
+	 }
+	 
+	 #filter_button {
+	     float: right;
+	     margin-right: 90px;
+	 }
+	 
+	 #filter_form {
+	     margin-bottom: 90px;
+	 }

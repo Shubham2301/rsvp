@@ -12,7 +12,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvy-xsfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
         <script type="text/javascript" src="main.js" async defer></script>
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-        <link rel="stylesheet" href="/resources/demos/style.css">
+       <!--  <link rel="stylesheet" href="/resources/demos/style.css"> -->
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <link rel="stylesheet" type="text/css" href="styling.css"></link>
 
@@ -82,15 +82,15 @@
                     <div class="row">
                         <div class = "col-md-12">
                             <form class="form-inline" id="filter_form">
-                                <div class="form-group inline"  >
+                                <span class="form-group inline" id="user_status">
                                     <label for="status">Status</label> <br>
-                                    <input type="radio" name="status" value="all" id="status" checked> All
-                                    <input type="radio" name="status" value="pending"> pending
+                                    <span id="all"><input type="radio" name="status" value="all" id="status" checked> All </span>
+                                    <span id="pending"><input type="radio" name="status" value="pending" > pending </span>
                                     <br>
-                                    <input type="radio" name="status" value="confirmed"> confirmed s
-                                    <input type="radio" name="status" value="declined"> declined  
-                                </div>
-                                <div class="form-group select inline">
+                                    <span id="confirmed"> <input  type="radio" name="status" value="confirmed" > confirmed </span>
+                                    <span id="declined"> <input type="radio" name="status" value="declined"> declined  </span>
+                                </span>
+                                <span class="form-group select inline" id="user_gender">
                                     <label  for="gender">Gender</label> 
                                     <br>
                                     <select name="gender">
@@ -98,25 +98,25 @@
                                     <option value="male">Male</option>
                                     <option value="female">Female</option>
                                     </select>
-                                </div>
-                                <div class="form-group inline"> 
+                                </span>
+                                <span class="form-group inline" id="list_limit"> 
                                     <label for="limit" >Limit</label> 
                                     <br>   
                                     <input type="number" onkeypress="return event.charCode >= 48" value="10" min="0" name="limit" id="limit_id"> 
-                                </div>
-                                <div>
-                                    <div class="form-group inline">
+                                </span>
+                                <div id="date_picker">
+                                    <div class="form-group inline" id="start_dp">
                                         <label for="date-picker-start">Pick a start date</label>
                                         <input type="text" id="startDatePicker" name="start_date">
                                     </div>
                                     <br>    
-                                    <div class="form-group inline">
-                                        <label for="date-picker-end">Pick a end date</label>
+                                    <div class="form-group inline" id="end_dp">
+                                        <label for="date-picker-end">Pick an end date</label>
                                         <input type="text" id="endDatePicker" name="end_date">
                                     </div>
-                                <div>
+                                </div>
                                 <br>  
-                                <div class="form-group">
+                                <div class="form-group" id="filter_button">
                                     <button type="button" class="btn btn-primary " id="applyfilter_id">Apply Filters</button>
                                 </div>        
                             </form>
