@@ -7,9 +7,12 @@ function fetchTableData(){
 	$query= 'SELECT * FROM data ORDER BY id DESC LIMIT 10';
 	$store=mysqli_query($db, $query) or die('Error SQL!'.$query.'<br>'.mysqli_error());
 	$guests = array();
-	while ($row = mysqli_fetch_assoc($store)){
-		array_push($guests, $row);
-	}
+	// while ($row = mysqli_fetch_assoc($store)){
+	// 	array_push($guests, $row);
+	// }
+	$guests= mysqli_fetch_all($store,MYSQLI_ASSOC);
+	// var_dump($guests);
+	// die();
 	return $guests;
 }
 

@@ -14,6 +14,7 @@
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <link rel="stylesheet" href="/resources/demos/style.css">
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <link rel="stylesheet" type="text/css" href="styling.css"></link>
 
     </head>
 
@@ -81,17 +82,15 @@
                     <div class="row">
                         <div class = "col-md-12">
                             <form class="form-inline" id="filter_form">
-                                <div class="form-group"  >
+                                <div class="form-group inline"  >
                                     <label for="status">Status</label> <br>
                                     <input type="radio" name="status" value="all" id="status" checked> All
-                                    <br>
                                     <input type="radio" name="status" value="pending"> pending
                                     <br>
-                                    <input type="radio" name="status" value="confirmed"> confirmed 
-                                    <br>
+                                    <input type="radio" name="status" value="confirmed"> confirmed s
                                     <input type="radio" name="status" value="declined"> declined  
                                 </div>
-                                <div class="form-group select">
+                                <div class="form-group select inline">
                                     <label  for="gender">Gender</label> 
                                     <br>
                                     <select name="gender">
@@ -100,18 +99,18 @@
                                     <option value="female">Female</option>
                                     </select>
                                 </div>
-                                <div class="form-group"> 
+                                <div class="form-group inline"> 
                                     <label for="limit" >Limit</label> 
                                     <br>   
                                     <input type="number" onkeypress="return event.charCode >= 48" value="10" min="0" name="limit" id="limit_id"> 
                                 </div>
                                 <div>
-                                    <div class="form-group">
+                                    <div class="form-group inline">
                                         <label for="date-picker-start">Pick a start date</label>
                                         <input type="text" id="startDatePicker" name="start_date">
                                     </div>
                                     <br>    
-                                    <div class="form-group">
+                                    <div class="form-group inline">
                                         <label for="date-picker-end">Pick a end date</label>
                                         <input type="text" id="endDatePicker" name="end_date">
                                     </div>
