@@ -49,3 +49,7 @@
 	 #filter_form {
 	     margin-bottom: 90px;
 	 }
+	 
+	 .gender>input {
+	     margin: 10px;
+	 }

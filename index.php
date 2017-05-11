@@ -56,7 +56,7 @@
                                     <input type="email" class="form-control" name="email" id="email_id" placeholder="abc@def.com" required="true">
                                 </div>
                                  </br>
-                                 <div class="form-group">
+                                 <div class="form-group gender">
                                      <label for="gender">Gender: </label>
                                      <input type="radio" name="gender" value="male" id="male">MALE
                                      <input type="radio" name="gender" value="female" id="female">FEMALE
