@@ -94,7 +94,7 @@ function showListTable(subscribers) {
         row_html += '<td>' + subscriber['phone'] + '</td>';
         row_html += '<td>' + subscriber['gender'] + '</td>';
         row_html += '<td>' + subscriber['reg_date'] + '</td>';
-        row_html += '<td class="label">' + subscriber['status'] + '</td>';
+        row_html += '<td class="label" id"status_table">' + subscriber['status'] + '</td>';
         row_html += '</tr>';
 
         html += row_html;

@@ -7,12 +7,7 @@ function fetchTableData(){
 	$query= 'SELECT * FROM data ORDER BY id DESC LIMIT 10';
 	$store=mysqli_query($db, $query) or die('Error SQL!'.$query.'<br>'.mysqli_error());
 	$guests = array();
-	// while ($row = mysqli_fetch_assoc($store)){
-	// 	array_push($guests, $row);
-	// }
 	$guests= mysqli_fetch_all($store,MYSQLI_ASSOC);
-	// var_dump($guests);
-	// die();
 	return $guests;
 }
 
@@ -161,10 +156,7 @@ function applyFilter($status,$gender,$limit,$startDate,$endDate)
 
 	$list=mysqli_query($db,$query) or die('SQL ERROR!! '.$query.'<br>'.mysqli_error($db));
 	$display_list=array();
-	while($row= mysqli_fetch_assoc($list))
-	{
-		array_push($display_list,$row);
-	}
+	$display_list=mysqli_fetch_all($list,MYSQLI_ASSOC);
 	return $display_list;
 	
 }
