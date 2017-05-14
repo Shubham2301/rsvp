@@ -8,14 +8,8 @@
     <head>
         <title> RSVP </title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvy-xsfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-        <script type="text/javascript" src="main.js" async defer></script>
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-       <!--  <link rel="stylesheet" href="/resources/demos/style.css"> -->
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <link rel="stylesheet" type="text/css" href="styling.css"></link>
-
     </head>
 
     <body>
@@ -25,7 +19,7 @@
             </div>
             <div>
                 <ul class = "nav navbar-nav navbar-right" style= "margin-right: 0">
-                <li class = ""><a href = "#">Home</a></li>
+                    <li class = ""><a href = "#">Home</a></li>
                 </ul>
             </div>
         </nav>
@@ -68,8 +62,7 @@
                                 </br>
                                 </br>
                                 <a href="pdf.php" target="_blank">Click to see full guest list</a> 
-                            </form>
-                            
+                            </form>      
                         </div>
                     </div>
                 </div>
@@ -84,14 +77,14 @@
                             <form class="form-inline" id="filter_form">
                                 <span class="form-group inline" id="user_status">
                                     <label for="status">Status</label> <br>
-                                    <span id="all"><input type="radio" name="status" value="all" id="status" checked> All </span>
-                                    <span id="pending"><input type="radio" name="status" value="pending" > pending </span>
+                                    <span id="all" class="float_left"><input type="radio" name="status" value="all" id="status" checked>All</span>
+                                    <span id="pending" class="float_right"><input type="radio" name="status" value="pending">pending</span>
                                     <br>
-                                    <span id="confirmed"> <input  type="radio" name="status" value="confirmed" > confirmed </span>
-                                    <span id="declined"> <input type="radio" name="status" value="declined"> declined  </span>
+                                    <span id="confirmed" class="float_left"><input  type="radio" name="status" value="confirmed">confirmed</span>
+                                    <span id="declined" class="float_right"><input type="radio" name="status" value="declined">declined</span>
                                 </span>
-                                <span class="form-group select inline" id="user_gender">
-                                    <label  for="gender">Gender</label> 
+                                <span class="form-group select inline onleft" id="user_gender">
+                                    <label for="gender">Gender</label> 
                                     <br>
                                     <select name="gender">
                                     <option value="all">All</option>
@@ -99,7 +92,7 @@
                                     <option value="female">Female</option>
                                     </select>
                                 </span>
-                                <span class="form-group inline" id="list_limit"> 
+                                <span class="form-group inline onleft" id="list_limit"> 
                                     <label for="limit" >Limit</label> 
                                     <br>   
                                     <input type="number" onkeypress="return event.charCode >= 48" value="10" min="0" name="limit" id="limit_id"> 
@@ -153,14 +146,13 @@
                                                   $status_class='label-danger';  
                                             ?>        
                                                    
-                                         
                                             <tr>
                                                 <td><?php echo $guest['id']; ?></td>
                                                 <td><?php echo $guest['name']; ?></td>
                                                 <td><?php echo $guest['phone']; ?></td>
                                                 <td><?php echo $guest['gender']; ?></td>
                                                 <td><?php echo $guest['reg_date']; ?></td>
-                                                <td><span class="label <?php echo "$status_class"; ?>" ><?php echo $guest['status']; ?> </span></td> 
+                                                <td><span class="label <?php echo $status_class; ?>"><?php echo $guest['status']; ?> </span></td> 
                                             </tr>
                                     <?php
                                         }
@@ -172,5 +164,9 @@
                  </div>
             </div>
         </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvy-xsfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="main.js" async defer></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     </body> 
 </html>

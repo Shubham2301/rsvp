@@ -1,14 +1,9 @@
 	 #user_status {
 	     margin: 10px;
 	     width: 170px;
-	     /*position: relative;*/
 	 }
 	 
-	 #user_gender {
-	     margin-left: 40px;
-	 }
-	 
-	 #list_limit {
+	 .onleft {
 	     margin-left: 40px;
 	 }
 	 
@@ -20,25 +15,14 @@
 	     margin-bottom: 10px;
 	 }
 	 
-	 #all {
-	     float: left;
-	     margin-right: 10px;
-	     position: relative;
-	 }
-	 
-	 #pending {
-	     margin-left: 10px;
-	     float: right;
-	 }
-	 
-	 #confirmed {
+	 .float_left {
 	     float: left;
 	     margin-right: 10px;
 	 }
 	 
-	 #declined {
-	     float: right;
+	 .float_right {
 	     margin-left: 10px;
+	     float: right;
 	 }
 	 
 	 #filter_button {
@@ -52,4 +36,13 @@
 	 
 	 .gender>input {
 	     margin: 10px;
+	 }
+	 
+	 #guest_list_table {
+	     border-collapse: collapse;
+	     text-align: center;
+	 }
+	 
+	 #guest_list_table td {
+	     padding: 20px;
 	 }

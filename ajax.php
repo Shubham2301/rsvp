@@ -21,7 +21,10 @@ if(isset($_POST['action']))
 				break;
 			}
 		case 'applyFilter': 	
-			print json_encode(applyFilter($_POST['status'],$_POST['gender'],$_POST['limit'],$_POST['start_date'],$_POST['end_date']));
-			break;	
+			if((isset($_POST['status']))&&(isset($_POST['gender']))&&(isset($_POST['limit']))&&(isset($_POST['start_date']))&&(isset($_POST['end_date'])))
+			{
+				print json_encode(applyFilter($_POST['status'], $_POST['gender'], $_POST['limit'], $_POST['start_date'], $_POST['end_date']));
+				break;
+			}		
 	}
 }
