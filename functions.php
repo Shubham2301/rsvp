@@ -77,6 +77,7 @@ function generateToken()
 function getUserDetails($user_id)
 {
 	global $db;
+	$user_data=array();
 	$query= "SELECT * FROM data WHERE id='".$user_id."'";
 	$select=mysqli_query($db, $query) or die('Error SQL!'.$query.'<br>'.mysqli_error());
 	$row = mysqli_fetch_assoc($select);
@@ -116,8 +117,8 @@ function changeStatus($user_id,$status)
 	}
 	else if($status=='declined')
 	{
-		$query= "UPDATE `data` SET `status`= declined WHERE `id`	='".$user_id."'";
-		$update=mysqli_query($db,$query) or die('Error SQL!'.$query.'<br>'.mysqli_error());
+		$query= "UPDATE `data` SET `status`= 'declined' WHERE `id`	='".$user_id."'";
+		$update=mysqli_query($db,$query) or die('Error SQL!'.$query.'<br>'.mysqli_error($db));
 		displayRSVPDeclined();
 	}
 
